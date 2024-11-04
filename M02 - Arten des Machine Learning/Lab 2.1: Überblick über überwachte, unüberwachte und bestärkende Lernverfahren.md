@@ -71,3 +71,53 @@ kmeans.fit(X)
 # Cluster-Zuordnungen und Clusterzentren ausgeben
 print("Cluster-Zuordnungen:", kmeans.labels_)
 print("Cluster-Zentren:", kmeans.cluster_centers_)
+
+
+---
+
+### Datei: `3_Bestaerkendes_Lernen.md`
+
+```markdown
+# Lab 2.1: Überblick über Bestärkendes Lernen (Reinforcement Learning)
+
+## Einleitung
+Im bestärkenden Lernen lernt ein Agent durch Interaktionen mit einer Umgebung. Der Agent trifft Entscheidungen, die entweder belohnt oder bestraft werden, und versucht so, die Belohnungen im Laufe der Zeit zu maximieren.
+
+## Beispielanwendungen
+- **Spiele**: Ein KI-Agent lernt, ein Spiel wie Schach oder Go zu spielen.
+- **Robotersteuerung**: Roboter lernen, durch eine Umgebung zu navigieren und Hindernisse zu vermeiden.
+
+## Codebeispiel: Einfaches Reinforcement Learning mit Q-Learning
+
+In diesem Beispiel zeigen wir ein einfaches Q-Learning-Modell, bei dem der Agent lernt, sich in einem Gitter zu bewegen und eine Belohnung zu maximieren.
+
+```python
+import numpy as np
+
+# Gitterumgebung und Belohnungsmatrix definieren
+states = 5  # Anzahl der Zustände
+actions = 2  # Zwei Aktionen: Links (0) und Rechts (1)
+Q = np.zeros((states, actions))  # Q-Tabelle für Q-Learning
+rewards = [0, 0, 0, 1, 10]  # Belohnungen für jeden Zustand
+
+# Hyperparameter
+alpha = 0.1  # Lernrate
+gamma = 0.9  # Diskontfaktor
+episodes = 10  # Anzahl der Episoden
+
+# Q-Learning Prozess
+for episode in range(episodes):
+    state = 0  # Startzustand
+    while state < states - 1:
+        action = np.random.choice([0, 1])  # Zufällige Aktion wählen
+        new_state = state + (1 if action == 1 else -1)
+        new_state = max(0, min(new_state, states - 1))
+        
+        # Q-Wert aktualisieren
+        Q[state, action] = Q[state, action] + alpha * (
+            rewards[new_state] + gamma * np.max(Q[new_state]) - Q[state, action]
+        )
+        
+        state = new_state  # Zustand aktualisieren
+
+print("Q-Tabelle nach dem Training:\n", Q)
