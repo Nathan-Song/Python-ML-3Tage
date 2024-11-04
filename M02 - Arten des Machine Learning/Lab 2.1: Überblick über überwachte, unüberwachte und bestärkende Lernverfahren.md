@@ -43,3 +43,6 @@ y_pred = model.predict(X_test)
 # Modellbewertung
 mse = mean_squared_error(y_test, y_pred)
 print("Mean Squared Error:", mse)
+
+```
+---
