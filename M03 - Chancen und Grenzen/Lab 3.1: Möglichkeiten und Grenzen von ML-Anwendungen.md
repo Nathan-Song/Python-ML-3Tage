@@ -39,3 +39,29 @@ print("Genauigkeit:", accuracy)
 
 ```
 ---
+
+## 2. Grenzen von ML-Anwendungen
+
+Trotz der vielen Vorteile stoßen ML-Anwendungen in der Praxis auch an ihre Grenzen. Einige der wesentlichen Herausforderungen und Einschränkungen sind:
+
+### Datenqualität und -verfügbarkeit
+
+- **Herausforderung**: ML-Modelle sind stark von der Qualität und Menge der verfügbaren Daten abhängig. Fehlende, unvollständige oder ungenaue Daten können die Modellleistung beeinträchtigen.
+  
+#### Codebeispiel: Datenvorbereitung und Umgang mit fehlenden Werten
+
+```python
+import pandas as pd
+from sklearn.impute import SimpleImputer
+
+# Beispiel-Datensatz mit fehlenden Werten
+data = {'Größe': [5.0, 5.5, None, 7.5, 8.0, None], 'Gewicht': [200, 190, 210, None, 220, 205]}
+df = pd.DataFrame(data)
+
+# Fehlende Werte mit dem Mittelwert auffüllen
+imputer = SimpleImputer(strategy='mean')
+df_filled = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+print("Daten nach der Imputation:")
+print(df_filled)
+
