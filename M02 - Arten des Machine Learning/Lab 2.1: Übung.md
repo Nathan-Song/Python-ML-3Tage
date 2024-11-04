@@ -48,3 +48,29 @@ print("Genauigkeit:", accuracy)
 
 ```
 ---
+
+
+### Hilfestellung für Unüberwachtes Lernen – Clustering mit K-Means
+--
+
+#### Schritte zur Lösung
+
+1. Erstellen Sie einen kleinen Datensatz mit Koordinatenpunkten.
+2. Verwenden Sie den K-Means-Algorithmus, um diese Punkte in zwei Gruppen zu unterteilen.
+
+#### Hilfestellung und Codebeispiel
+
+```python
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Beispiel-Datensatz: Koordinatenpunkte (x, y)
+X = np.array([[1, 2], [2, 3], [3, 3], [8, 8], [9, 10], [10, 8]])
+
+# KMeans-Modell mit 2 Clustern erstellen
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(X)
+
+# Cluster-Zuordnungen und Clusterzentren ausgeben
+print("Cluster-Zuordnungen:", kmeans.labels_)
+print("Cluster-Zentren:", kmeans.cluster_centers_)
