@@ -40,3 +40,35 @@ print("Genauigkeit:", accuracy)
 
 ```
 ---
+
+### Herausforderung 2: Modell-Interpretierbarkeit und Transparenz
+
+- **Problem**: Einige ML-Modelle, wie neuronale Netze, sind schwer zu interpretieren. Das Fehlen von Transparenz kann die Akzeptanz von ML-Modellen verringern, insbesondere in Bereichen, in denen die Nachvollziehbarkeit entscheidend ist.
+
+---
+#### Codebeispiel: Feature Importance in Entscheidungsbäumen
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+
+# Beispiel-Datensatz
+X = np.array([[1.5, 0.3], [1.8, 0.4], [2.0, 0.6], [1.3, 0.2], [1.7, 0.5], [2.1, 0.8]])
+y = np.array([1, 1, 1, 0, 0, 0])  # Klassifikation
+
+# Entscheidungsbaum-Modell erstellen und trainieren
+model = DecisionTreeClassifier()
+model.fit(X, y)
+
+# Wichtigkeit der Merkmale anzeigen
+feature_importances = model.feature_importances_
+print("Feature Importance:", feature_importances)
+
+```
+---
+
+### Code für **Erklärung zu Feature Importance in Entscheidungsbäumen**
+
+```markdown
+**Erklärung**:
+- Die Merkmalswichtigkeit gibt an, welche Variablen am meisten Einfluss auf das Modell haben. Das hilft, die Entscheidungsgrundlage des Modells transparenter zu machen.
