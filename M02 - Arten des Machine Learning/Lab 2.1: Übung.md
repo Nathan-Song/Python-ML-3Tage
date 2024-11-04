@@ -51,7 +51,6 @@ print("Genauigkeit:", accuracy)
 
 
 ### Hilfestellung für Unüberwachtes Lernen – Clustering mit K-Means
---
 
 #### Schritte zur Lösung
 
