@@ -1,53 +1,42 @@
 # Lab 3.1: Möglichkeiten und Grenzen von ML-Anwendungen – Übungsaufgabe
 
 ## Einleitung
-In dieser Übung geht es darum, die praktischen Möglichkeiten und Grenzen von Machine Learning zu analysieren. Sie erfahren, wie ML zur Lösung bestimmter Probleme eingesetzt werden kann und welche Einschränkungen zu beachten sind. Ziel ist es, die Chancen und Herausforderungen besser zu verstehen und kritisch zu hinterfragen.
+In dieser Übung befassen Sie sich mit den praktischen Grenzen von Machine Learning, insbesondere im Bereich der Bilderkennung. Sie erfahren, welche Herausforderungen bei der Bilderkennung auftreten können, und lernen, die Leistungsfähigkeit und Grenzen eines einfachen Modells zu bewerten.
 
 ---
 
-## Übung: Erkennen der Grenzen von Machine Learning im Kundenservice
+## Übung: Bilderkennung zur Defekterkennung in der Fertigung
 
 ### Aufgabe
-Stellen Sie sich vor, Sie arbeiten in einem Kundenservice-Team, das Machine Learning zur Analyse von Kundenfeedback einsetzen möchte. Die Aufgabe des Modells ist es, automatisch zu erkennen, ob das Feedback positiv oder negativ ist. Entwickeln Sie ein einfaches Modell, das dies ermöglicht, und reflektieren Sie anschließend die Grenzen dieses Modells.
+Stellen Sie sich vor, Sie arbeiten in einem Produktionsunternehmen, das Machine Learning zur Erkennung defekter Produkte einsetzen möchte. Ihre Aufgabe ist es, ein einfaches Modell zu entwickeln, das auf Basis von Bildmerkmalen erkennt, ob ein Produkt defekt oder intakt ist. Anschließend reflektieren Sie über die Grenzen dieses Modells und diskutieren, welche Herausforderungen dabei auftreten können.
 
 ### Schritte zur Lösung
-1. Erstellen Sie einen Datensatz mit verschiedenen Kundenkommentaren, die als positiv (`1`) oder negativ (`0`) gekennzeichnet sind.
-2. Teilen Sie die Daten in Trainings- und Testdaten auf.
-3. Trainieren Sie ein Modell zur Textklassifikation (z. B. Naive Bayes).
-4. Überprüfen Sie die Genauigkeit und überlegen Sie, welche Grenzen dieses Modell haben könnte, z. B. bei ironischem Feedback oder komplexen Aussagen.
+1. Erstellen Sie einen kleinen Datensatz mit Merkmalen, die Bildinformationen simulieren (z. B. Helligkeit und Kontrast).
+2. Kennzeichnen Sie die Daten als `0` (intakt) oder `1` (defekt).
+3. Teilen Sie die Daten in Trainings- und Testdaten auf.
+4. Trainieren Sie ein Decision Tree-Modell zur Klassifikation.
+5. Testen Sie das Modell auf den Testdaten und reflektieren Sie anschließend über die Grenzen und Herausforderungen dieses Ansatzes.
 
 ### Hilfestellung und Codebeispiel
 
 ```python
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+import numpy as np
 
-# Beispiel-Datensatz: Kundenfeedback und Klassifikation (1 = positiv, 0 = negativ)
-comments = [
-    "Sehr zufrieden mit dem Service!",
-    "Wirklich schlecht, nie wieder!",
-    "Das Produkt war toll.",
-    "Leider war der Support wenig hilfreich.",
-    "Alles super, gerne wieder!",
-    "Ich bin unzufrieden mit meiner Bestellung."
-]
-labels = [1, 0, 1, 0, 1, 0]  # 1 = positiv, 0 = negativ
-
-# Textdaten in Merkmale umwandeln
-vectorizer = CountVectorizer()
-X = vectorizer.fit_transform(comments)
+# Beispiel-Datensatz: Merkmale zur Simulation von Bildinformationen (Helligkeit, Kontrast)
+X = np.array([[200, 50], [180, 45], [120, 30], [150, 35], [100, 25], [190, 40]])
+y = np.array([0, 0, 1, 1, 1, 0])  # 0 = intakt, 1 = defekt
 
 # Schritt 1: Daten in Trainings- und Testdaten aufteilen
-X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# Schritt 2: Naive Bayes-Modell erstellen und trainieren
-model = MultinomialNB()
+# Schritt 2: Decision Tree-Modell erstellen und trainieren
+model = DecisionTreeClassifier()
 model.fit(X_train, y_train)
 
 # Schritt 3: Vorhersagen treffen und Genauigkeit prüfen
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print("Genauigkeit:", accuracy)
-
