@@ -48,3 +48,40 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print("Genauigkeit:", accuracy)
 
+```
+---
+
+## 2. Kritische Analyse: Chancen und Herausforderungen
+
+Die Implementierung von ML zur automatischen Klassifikation und Priorisierung von Kundenanfragen bietet Potenzial, aber auch Herausforderungen:
+
+### Chancen
+
+- **Effizienzsteigerung**: Automatisierte Klassifikation und Priorisierung beschleunigt die Bearbeitung von Anfragen und reduziert den manuellen Aufwand.
+- **Kundenzufriedenheit**: Wichtige Anliegen können schneller bearbeitet werden, was die Kundenzufriedenheit erhöht.
+
+### Herausforderungen
+
+- **Datenqualität**: Die Qualität des Modells hängt stark von der Datenqualität ab. Unvollständige oder nicht repräsentative Anfragedaten können zu ungenauen Klassifikationen führen.
+  
+#### Codebeispiel: Umgang mit fehlenden Werten
+
+```python
+import pandas as pd
+from sklearn.impute import SimpleImputer
+
+# Beispiel-Datensatz mit fehlenden Werten
+data = {'Anfrage': ["Internet langsam", None, "Rechnung unklar", "Konto gesperrt", None]}
+df = pd.DataFrame(data)
+
+# Fehlende Werte durch "Unbekannt" ersetzen
+imputer = SimpleImputer(strategy='constant', fill_value="Unbekannt")
+df_filled = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+print("Daten nach der Imputation:")
+print(df_filled)
+
+```
+---
+
+
