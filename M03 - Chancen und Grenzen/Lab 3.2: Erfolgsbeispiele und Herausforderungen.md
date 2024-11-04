@@ -69,6 +69,6 @@ print("Feature Importance:", feature_importances)
 
 ### Code für **Erklärung zu Feature Importance in Entscheidungsbäumen**
 
-```markdown
+
 **Erklärung**:
 - Die Merkmalswichtigkeit gibt an, welche Variablen am meisten Einfluss auf das Modell haben. Das hilft, die Entscheidungsgrundlage des Modells transparenter zu machen.
