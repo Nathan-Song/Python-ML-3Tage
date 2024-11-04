@@ -72,12 +72,9 @@ kmeans.fit(X)
 print("Cluster-Zuordnungen:", kmeans.labels_)
 print("Cluster-Zentren:", kmeans.cluster_centers_)
 
-
+```
 ---
 
-### Datei: `3_Bestaerkendes_Lernen.md`
-
-```markdown
 # Lab 2.1: Überblick über Bestärkendes Lernen (Reinforcement Learning)
 
 ## Einleitung
