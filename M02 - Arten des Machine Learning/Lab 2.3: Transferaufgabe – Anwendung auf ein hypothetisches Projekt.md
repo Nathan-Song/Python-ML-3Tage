@@ -56,3 +56,32 @@ kmeans.fit(X)
 print("Cluster-Zuordnungen:", kmeans.labels_)
 print("Cluster-Zentren:", kmeans.cluster_centers_)
 
+
+```
+---
+
+
+## 2. Anforderungen und Algorithmen
+
+### Anforderungen
+Für das Projekt gibt es zwei zentrale Anforderungen:
+1. **Kundensegmentierung**: Identifikation von Kundengruppen mit ähnlichem Verhalten, um passende Produktempfehlungen für jede Gruppe zu entwickeln.
+2. **Vorhersage von Kundeninteressen**: Analyse der Kaufhistorie und des Browsing-Verhaltens jedes Kunden, um individuelle Empfehlungen zu generieren.
+
+### Passende Algorithmen
+Für diese Anforderungen könnten folgende Algorithmen nützlich sein:
+
+1. **Kundensegmentierung**:
+   - **Algorithmus**: K-Means Clustering
+   - **Grund**: K-Means ist ein unüberwachter Lernalgorithmus, der gut für die Gruppierung von Daten geeignet ist. Er kann Kunden auf Basis ihrer Kaufhistorie in Cluster einteilen.
+
+2. **Vorhersage von Kundeninteressen**:
+   - **Algorithmus**: K-Nearest Neighbors (KNN) oder Entscheidungsbaum
+   - **Grund**: KNN könnte genutzt werden, um Produkte basierend auf dem Verhalten ähnlicher Kunden zu empfehlen. Alternativ könnte ein Entscheidungsbaum verwendet werden, um spezifische Vorlieben und Muster aus den Daten abzuleiten.
+
+---
+
+> **Nächste Schritte**: Im nächsten Schritt geht es darum, diese Algorithmen für das hypothetische Projekt anzuwenden und ihre Funktionsweise in einem Codebeispiel zu verdeutlichen.
+
+---
+
