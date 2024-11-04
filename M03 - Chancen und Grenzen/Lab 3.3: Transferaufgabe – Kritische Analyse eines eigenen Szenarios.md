@@ -83,5 +83,46 @@ print(df_filled)
 
 ```
 ---
+#### Codebeispiel: Umgang mit fehlenden Werten
+
+```python
+import pandas as pd
+from sklearn.impute import SimpleImputer
+
+# Beispiel-Datensatz mit fehlenden Werten
+data = {'Anfrage': ["Internet langsam", None, "Rechnung unklar", "Konto gesperrt", None]}
+df = pd.DataFrame(data)
+
+# Fehlende Werte durch "Unbekannt" ersetzen
+imputer = SimpleImputer(strategy='constant', fill_value="Unbekannt")
+df_filled = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+print("Daten nach der Imputation:")
+print(df_filled)
+
+```
+---
 
 
+---
+
+#### Codebeispiel: Feature Importance in einem Entscheidungsbaum für Verständnis
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+
+# Beispiel-Datensatz: einfache Merkmale zur Priorisierung (z. B. Anzahl Keywords, Dringlichkeit)
+X = np.array([[2, 3], [1, 2], [3, 1], [2, 5], [1, 3]])
+y = np.array([1, 0, 1, 1, 0])  # 1 = Hohe Priorität, 0 = Niedrige Priorität
+
+# Entscheidungsbaum-Modell erstellen und trainieren
+model = DecisionTreeClassifier()
+model.fit(X, y)
+
+# Wichtigkeit der Merkmale anzeigen
+feature_importances = model.feature_importances_
+print("Feature Importance:", feature_importances)
+
+```
+---
