@@ -43,3 +43,30 @@ y_pred = model.predict(X_test)
 # Modellbewertung
 mse = mean_squared_error(y_test, y_pred)
 print("Mean Squared Error:", mse)
+
+---
+# Lab 2.1: Überblick über Unüberwachtes Lernen (Unsupervised Learning)
+
+## Einleitung
+Beim unüberwachten Lernen arbeitet das Modell mit nicht gelabelten Daten und versucht, Strukturen oder Muster in den Daten zu erkennen. Es gibt keine "richtigen" Antworten, sondern das Modell gruppiert oder strukturiert die Daten eigenständig.
+
+## Beispielanwendungen
+- **Clustering**: Kundensegmentierung in Marketing – Kunden werden basierend auf ihrem Verhalten in Gruppen eingeteilt.
+- **Dimensionsreduktion**: Datenvisualisierung und -vorverarbeitung – das Modell reduziert die Anzahl der Variablen, während es die wichtigsten Merkmale beibehält.
+
+## Codebeispiel: K-Means Clustering für Kundensegmentierung
+
+```python
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Beispiel-Datensatz (Kaufverhalten von Kunden: Ausgaben und Häufigkeit)
+X = np.array([[100, 20], [200, 30], [300, 60], [400, 80], [500, 100], [600, 120]])
+
+# KMeans Modell mit 2 Clustern erstellen
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(X)
+
+# Cluster-Zuordnungen und Clusterzentren ausgeben
+print("Cluster-Zuordnungen:", kmeans.labels_)
+print("Cluster-Zentren:", kmeans.cluster_centers_)
