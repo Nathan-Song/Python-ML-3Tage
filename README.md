@@ -1,4 +1,4 @@
-# Einführung in die Schulung: Machine Learning und Deep Learning mit Python
+# Einführung in die Schulung: Machine Learning mit Python
 
 Willkommen zur dreitägigen Schulung zu Machine Learning und Deep Learning mit Python! In dieser Schulung werden Sie die grundlegenden und fortgeschrittenen Konzepte des Machine Learning kennenlernen, sich mit scikit-learn vertraut machen und Einblicke in neuronale Netze sowie Deep Learning mit TensorFlow und Keras gewinnen. Ziel ist es, Ihnen sowohl theoretisches Wissen als auch praktische Fähigkeiten zu vermitteln, die Sie direkt in Ihrem Arbeitsumfeld anwenden können.
 
