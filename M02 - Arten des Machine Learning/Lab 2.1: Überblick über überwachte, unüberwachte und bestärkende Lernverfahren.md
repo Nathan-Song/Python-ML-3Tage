@@ -44,6 +44,7 @@ y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 print("Mean Squared Error:", mse)
 
+```python
 ---
 # Lab 2.1: Überblick über Unüberwachtes Lernen (Unsupervised Learning)
 
